@@ -1,26 +1,27 @@
-def proses_transaksi(DaftarBarang, tipe_member):
-    t = 0
-    for b in DaftarBarang:
-        t += b['harga'] * b['jumlah']
+def proses_transaksi(daftar_barang, tipe_member):
     
-    d = 0
+    subtotal = 0
+    for barang in daftar_barang:
+        subtotal += barang['harga'] * barang['jumlah']
+    
+    diskon = 0
     if tipe_member == "GOLD":
-        d = t * 0.1
+        diskon = subtotal * 0.1
     elif tipe_member == "SILVER":
-        d = t * 0.05
+        diskon = subtotal * 0.05
     else:
-        d = 0
+        diskon = 0
         
-    TotalAkhir = t - d
+    total_akhir = subtotal - diskon
     
     print("=== STRUK BELANJA ===")
-    for b in DaftarBarang:
-        print(f"{b['nama']} x{b['jumlah']}: {b['harga'] * b['jumlah']}")
-    print(f"Subtotal: {t}")
-    print(f"Diskon: {d}")
-    print(f"Total Akhir: {TotalAkhir}")
+    for barang in daftar_barang:
+        print(f"{barang['nama']} x{barang['jumlah']}: {barang['harga'] * barang['jumlah']}")
+    print(f"Subtotal: {subtotal}")
+    print(f"Diskon: {diskon}")
+    print(f"Total Akhir: {total_akhir}")
     print("=====================")
-    return TotalAkhir
+    return total_akhir
 
 item_belanja = [{'nama': 'Laptop', 'harga': 10000000, 'jumlah': 1}, {'nama': 'Mouse', 'harga': 200000, 'jumlah': 2}]
 proses_transaksi(item_belanja, "GOLD")
