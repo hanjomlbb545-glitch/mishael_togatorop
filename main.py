@@ -1,14 +1,17 @@
+DISKON_GOLD = 0.10
+DISKON_SILVER = 0.05
+
 def proses_transaksi(daftar_barang, tipe_member):
-    
     subtotal = 0
     for barang in daftar_barang:
         subtotal += barang['harga'] * barang['jumlah']
     
     diskon = 0
+    # Mengganti angka mentah dengan konstanta deskriptif
     if tipe_member == "GOLD":
-        diskon = subtotal * 0.1
+        diskon = subtotal * DISKON_GOLD
     elif tipe_member == "SILVER":
-        diskon = subtotal * 0.05
+        diskon = subtotal * DISKON_SILVER
     else:
         diskon = 0
         
